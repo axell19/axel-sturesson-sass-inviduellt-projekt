@@ -1,0 +1,196 @@
+// Gör olika mixins 
+@mixin color {
+    //definierar en färg
+    color: rgb(95, 55, 2);
+}
+@mixin color2 {
+    //definierar en till färg
+    color: rgb(23, 151, 23);
+}
+@mixin fontSize ($sizeValue) {
+    font-size: $sizeValue;
+}
+@mixin flexGeneral ($position) {
+    display: flex;
+    justify-content: $position;
+}
+@mixin margin {
+    margin-right: 5%;
+    margin-left: 5%;   
+}
+@mixin fontFamily {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@mixin fontWeight {
+    //fetstil på texten
+    font-weight: bold;
+}
+
+@mixin boxShadow {
+    //ger elementet en skuggeffekt 
+    box-shadow: 15px 15px 10px black;
+}
+
+nav {
+    //inkluderar några av de mixins jag gjorde
+    @include fontSize(30px);
+    @include fontFamily;
+    @include margin;
+    margin-top: 4px;
+}
+
+footer {
+    //inkluderar lite mer mixins jag gjorde
+    @include fontSize(25px);
+    @include fontFamily;
+    @include fontWeight;
+    @include flexGeneral(center);
+}
+
+h1 {
+    @include fontSize(70px);
+    @include flexGeneral(center);
+    @include fontFamily;
+    color: white;
+}
+
+h2 {
+    @include flexGeneral(center);
+    @include fontSize(25px);
+    @include color;
+    @include margin;
+    @include fontFamily;
+    @include fontWeight;
+}
+
+h3 {
+    @include color2;
+    @include fontSize(25px);
+    @include fontFamily;
+    @include flexGeneral(center);
+    @include margin;
+    @include fontWeight;
+}
+
+h4 {
+    @include fontSize(25px);
+    @include margin;
+    @include fontFamily;
+    @include flexGeneral(center);
+    @include color;
+}
+
+h5 {
+    @include fontSize(25px);
+    @include fontFamily; 
+    @include flexGeneral(center);
+    @include color2;
+    @include margin;
+}
+
+//använder tex-decoration: none; för att få bort underline på länken i navbaren
+a {text-decoration: none;}
+a:visited {color: white;}
+//när man hoverar över blir texten grön
+a:hover {color: rgb(23, 151, 23);}
+a1:hover {color: rgb(23, 151, 23);}
+a2:hover {color:rgb(23, 151, 23);}
+
+.navbar {
+    background-color: black;
+    //position: fixed; och top: 0 för att få navbaren att stanna när man scrollar
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    right: 1px;
+    //för att få navbaren att ligga över alla andra element när man scrollar, annars låg den under
+    z-index: 1;
+}
+
+.footer {
+    background-color: rgb(95, 55, 2);
+    //position: relative; för att kunna flytta på elementet vart man vill
+    position: relative;
+    right: 8px;
+    top: 8px;
+    height: 75px;
+    width: 1263px;
+}
+
+.container {
+    background-color: black;
+    margin-top: 4%;
+    margin-left:33%;
+    margin-right:33%;
+    @include boxShadow;
+    position: relative;
+    top: 80px;
+}
+
+.container1 {
+    background-color: rgb(23, 151, 23);
+    //gör en border utanför contentet och paddingen på 2 pixlar i grön färg
+    border: 2px solid rgb(23, 151, 23);
+    //2 pixlar padding emmelan contentet och bordern
+    padding: 2px;
+    @include margin;
+    @include boxShadow;
+    position: relative;
+    top: 150px;
+}
+
+.container2 {
+    border: 2px solid rgb(95, 55, 2);
+    padding: 2px;
+    background-color: rgb(95, 55, 2);
+    margin-top: 60px;
+    width: 400px;
+    @include margin;
+    @include boxShadow;
+    position: relative;
+    top: 195px;
+}
+
+.container3 {
+    padding: 2px;
+    background-color: rgb(23, 151, 23);
+    border: 2px solid rgb(23, 151, 23);
+    width: 500px;
+    position: relative;
+    bottom: 189px;
+    left: 650px;
+    @include boxShadow;
+}
+
+.container4 {
+    border: 2px solid rgb(95, 55, 2);
+    padding: 2px;
+    background-color: rgb(95, 55, 2);
+    position : relative;
+    bottom: 300px;
+    left: 60px;
+    width: 500px;
+    @include boxShadow;
+}
+
+.image {
+    border: 2px solid rgb(95, 55, 2);
+    background-color: rgb(95, 55, 2);
+    padding: 2px;
+    margin-top: 2%;
+    margin-right: 54%;
+    margin-left: 5%; 
+    position: relative; 
+    bottom: 348px;
+    left: 550px; 
+    @include boxShadow;
+}
+
+body {
+    //lägger till 2 bakgrundsbilder
+    background-image: url(bilder/minecraft.jpg), url(bilder/netherworld.jpg);
+    //gör så att ena bilderna inte upprepas längre ner på sidan
+    background-repeat: no-repeat, repeat;
+}
